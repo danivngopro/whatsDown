@@ -2,8 +2,7 @@ import axios from "axios";
 import { config } from "../data/config";
 import { IService } from './../interfaces/IService';
 
-export default class AnswerService {
-  static postService = async (service: IService) => {
+  export const postService = async (service: IService) => {
     const { data } = await axios.post(
       `${config.servicesCrud.servicesCrudConnectionString}/`,
       service
@@ -11,7 +10,7 @@ export default class AnswerService {
     return data;
   };
 
-  static updateServiceById = async (service: IService, serviceId: string) => {
+  export const updateServiceById = async (service: IService, serviceId: string) => {
     const { data } = await axios.post(
       `${config.servicesCrud.servicesCrudConnectionString}/updateServiceById/${serviceId}`,
       service
@@ -19,17 +18,23 @@ export default class AnswerService {
     return data;
   };
 
-  static getServiceById = async (serviceId: string) => {
+  export const getServiceById = async (serviceId: string) => {
     const { data } = await axios.get(
       `${config.servicesCrud.servicesCrudConnectionString}/getServiceById/${serviceId}`
     );
     return data;
   };
+  
+  export const getAllServices = async () => {
+    const { data } = await axios.get(
+      `${config.servicesCrud.servicesCrudConnectionString}/getAll`
+    );
+    return data;
+  };
 
-  static deleteServiceById = async (serviceId: string) => {
+  export const deleteServiceById = async (serviceId: string) => {
     const { data } = await axios.get(
       `${config.servicesCrud.servicesCrudConnectionString}/deleteServiceById/${serviceId}`
     );
     return data;
   };
-}

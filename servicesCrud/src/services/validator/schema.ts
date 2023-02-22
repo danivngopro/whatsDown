@@ -32,5 +32,11 @@ export const idSchema = Joi.object({
   params: serviceIdSchema,
 });
 
+export const getAllSchema = Joi.object({
+  body: {},
+  query: {},
+  params: {},
+});
+
 
 

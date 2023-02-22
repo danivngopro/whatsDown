@@ -1,7 +1,4 @@
-import * as dotenv from 'dotenv';
 import * as env from 'env-var';
-
-dotenv.config();
 
 export const config = {
   servicesCrud: {

@@ -17,6 +17,12 @@ export class ServiceManager {
     return service;
   }
 
+  static async getAll(): Promise<IService[]> {
+    const service = await ServiceRepository.getAll();
+    if (service.length === 0) throw new ServiceNotFound();
+    return service;
+  }
+
   static async deleteServiceById(serviceId: string): Promise<IService | null> {
     const numberOfDeletedservices = await ServiceRepository.deleteServiceById(serviceId);
     if (!numberOfDeletedservices) throw new ServiceNotFound();

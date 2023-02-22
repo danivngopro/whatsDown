@@ -13,6 +13,10 @@ export class ServiceRepository {
   static getServiceById(serviceId: string): Promise<IService | null> {
     return ServiceModel.findById(serviceId).exec();
   }
+  
+  static getAll(): Promise<IService[]> {
+    return ServiceModel.find({}).exec();
+  }
 
   static async deleteServiceById(serviceId: string): Promise<IService | null> {
     return ServiceModel.findByIdAndDelete(serviceId).exec();

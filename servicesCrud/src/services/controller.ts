@@ -11,6 +11,10 @@ export class ServiceController {
     res.json(await ServiceManager.getServiceById(req.params.id as string));
   }
   
+  static async getAll(_req: Request, res: Response): Promise<void> {
+    res.json(await ServiceManager.getAll());
+  }
+  
   static async updateServiceById(req: Request, res: Response): Promise<void> {
     const newservice = req.body;
     res.json(await ServiceManager.updateServiceById(newservice, req.params.id as string));
