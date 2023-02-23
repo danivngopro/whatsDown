@@ -10,8 +10,8 @@ import { IService } from './../interfaces/IService';
     return data;
   };
 
-  export const updateServiceById = async (service: IService, serviceId: string) => {
-    const { data } = await axios.post(
+  export const updateServiceById = async (service: Partial<IService>, serviceId: string) => {
+    const { data } = await axios.put(
       `${config.servicesCrud.servicesCrudConnectionString}/updateServiceById/${serviceId}`,
       service
     );
@@ -33,7 +33,7 @@ import { IService } from './../interfaces/IService';
   };
 
   export const deleteServiceById = async (serviceId: string) => {
-    const { data } = await axios.get(
+    const { data } = await axios.delete(
       `${config.servicesCrud.servicesCrudConnectionString}/deleteServiceById/${serviceId}`
     );
     return data;
