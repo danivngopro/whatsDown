@@ -25,3 +25,11 @@ services:
       - ./nginx:/etc/nginx/conf.d
     ports:
       - 80:80
+  
+  frontend:
+    container_name: frontend
+    image: whatsdown-frontend:latest
+    environment:
+      FRONTEND_URL: 'http://localhost'
+    ports:
+      - 3000:3000

@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <Box>
       <Box>
-        <h1>What's down</h1>
+        <h1>What'sDown</h1>
       </Box>
       {services.length > 0 ? (
         <Grid

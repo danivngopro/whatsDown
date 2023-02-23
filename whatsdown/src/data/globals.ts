@@ -40,7 +40,7 @@ export const environment = {
         infiniteScrollPageCount: 10,
     },
     createdRelationshipIdInBrokenRules: 'created-relationship-id',
-    accessTokenName: 'forms-access-token',
+    accessTokenName: 'whatsdown-access-token',
     minimumSupportedChromeVersion: 80,
     fileIdLength: 32,
 };

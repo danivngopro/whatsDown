@@ -6,15 +6,12 @@ import { environment } from "../../data/globals";
 export class AuthService {
   static getUser = () => {
     // only for react-scripts start
-    if (
-      process.env.NODE_ENV === "development" &&
-      !process.env.REACT_APP_IS_DOCKER
-    ) {
-      cookies.set(
-        environment.accessTokenName,
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNTY4ODMyNDIwM2ZjNDAwNDM1OTFhYSIsIm5hbWUiOnsiZmlyc3ROYW1lIjoi16DXmdeZ16fXmSIsImxhc3ROYW1lIjoi15DXk9eZ15PXoSJ9LCJkaXNwbGF5TmFtZSI6InQyMzQ1ODc4OUBqZWxsby5jb20iLCJyYW5rIjoibWVnYSIsImpvYiI6Iteo15XXpteXIiwiaWF0IjoxNjI3MTMxNzExLCJleHAiOjIwMDAwMDAwMDB9.yxis0RbaKM9--HPyq34BSZ7QhY8urnyzRo7OpK6GA-4"
-      );
-    }
+    // if (import.meta.env.MODE === 'development') {
+    //   cookies.set(
+    //     environment.accessTokenName,
+    //     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlNTY4ODMyNDIwM2ZjNDAwNDM1OTFhYSIsIm5hbWUiOnsiZmlyc3ROYW1lIjoi16DXmdeZ16fXmSIsImxhc3ROYW1lIjoi15DXk9eZ15PXoSJ9LCJkaXNwbGF5TmFtZSI6InQyMzQ1ODc4OUBqZWxsby5jb20iLCJyYW5rIjoibWVnYSIsImpvYiI6Iteo15XXpteXIiwiaWF0IjoxNjI3MTMxNzExLCJleHAiOjIwMDAwMDAwMDB9.yxis0RbaKM9--HPyq34BSZ7QhY8urnyzRo7OpK6GA-4"
+    //   );
+    // }
 
     const accessToken = cookies.get(environment.accessTokenName);
 
