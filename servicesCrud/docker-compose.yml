@@ -1,0 +1,35 @@
+version: "3"
+services:
+  srevices_crud:
+    build: ./
+    environment:
+      DB_CONNECTION_URL: mongodb://mongo:27017
+      APPLICATION_PORT: 3001
+      TOKEN_SECRET: secret
+      SHRAGA_URL: https://shraga.shraga.branch-yesodot.org
+      CALLBACK_URL: http://localhost/api/auth/callback
+      ACCESS_TOKEN_NAME: whatsdown-access-token
+      SYSTEM_UNAVAILABLE_URL: /unavailable
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  gateway:
+    image: nginx:alpine
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - 80:80
+  
+  frontend:
+    container_name: frontend
+    build: ../whatsdown
+    environment:
+      FRONTEND_URL: 'http://localhost'
+    ports:
+      - 3000:3000
