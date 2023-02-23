@@ -28,7 +28,7 @@ services:
   
   frontend:
     container_name: frontend
-    image: whatsdown-frontend:latest
+    build: ../whatsdown
     environment:
       FRONTEND_URL: 'http://localhost'
     ports:
