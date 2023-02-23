@@ -3,11 +3,13 @@ import * as express from 'express';
 import * as http from 'http';
 import * as bodyParser from 'body-parser';
 import * as morgan from 'morgan';
+import * as cookieParser from "cookie-parser";
 import { errorMiddleware } from './utils/errors/errorHandler';
 import { logger } from './utils/logger';
 import { SeverityLevel } from './utils/severityLevel';
 import { config } from './config';
 import { AppRouter } from './router';
+import { initPassport } from './utils/express/passport';
 const cors = require("cors");
 export class Server {
   public app: express.Application;
@@ -15,6 +17,7 @@ export class Server {
   private server: http.Server;
 
   public static startServer(): Server {
+    initPassport();
     return new Server();
   }
 
@@ -24,12 +27,16 @@ export class Server {
 
   private constructor() {
     this.app = express();
+    this.app.use(cookieParser());
     this.app.use(cors());
     this.configurationMiddleware();
     this.app.use(AppRouter);
     this.app.use(errorMiddleware);
     this.server = this.app.listen(config.server.port, () => {
-      logger.log(SeverityLevel.Informational, `${config.server.name} listening on port ${config.server.port}`);
+      logger.log(
+        SeverityLevel.Informational,
+        `${config.server.name} listening on port ${config.server.port}`
+      );
     });
   }
 
